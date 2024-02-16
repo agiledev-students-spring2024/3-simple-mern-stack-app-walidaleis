@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming P
 
 // connect to database
 mongoose
-  .connect(`${process.env.DB_CONNECTION_STRING}`)
+  .connect(`mongodb://${process.env.DB_CONNECTION_STRING}`)
   .then(data => console.log(`Connected to MongoDB`))
   .catch(err => console.error(`Failed to connect to MongoDB: ${err}`))
 
