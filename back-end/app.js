@@ -3,6 +3,7 @@ const express = require('express') // CommonJS import style!
 const morgan = require('morgan') // middleware for nice logging of incoming HTTP requests
 const cors = require('cors') // middleware for enabling CORS (Cross-Origin Resource Sharing) requests.
 const mongoose = require('mongoose')
+const port = 5002;
 
 const app = express() // instantiate an Express object
 app.use(morgan('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' })) // log all incoming requests, except when in unit test mode.  morgan has a few logging default styles - dev is a nice concise color-coded style
@@ -57,6 +58,7 @@ app.get('/messages/:messageId', async (req, res) => {
     })
   }
 })
+
 // a route to handle logging out users
 app.post('/messages/save', async (req, res) => {
   // try to save the message to the database
@@ -77,6 +79,16 @@ app.post('/messages/save', async (req, res) => {
     })
   }
 })
+
+const data = {
+  content: "Hi there! I'm Walid Al-Eisawi, a 20-year-old junior at NYU Abu Dhabi currently studying computer engineering. I'm taking a year to study away in New York, which has been an incredible experience so far. Born in Texas, I've spent most of my life in Abu Dhabi, embracing the diverse cultural influences around me. Interestingly, I'm the only ginger in my family – a little fun fact that always sparks conversations! \n\nBeyond my academic pursuits, I'm passionate about fitness. Whether it's hitting the gym for some strength training, going for a walk, or playing soccer, staying active is a vital part of my routine. I find joy in the camaraderie of team sports and the discipline of individual workouts. \n\nAlthough my roots lie in Texas and Abu Dhabi, I hold a deep connection to my Palestinian heritage. I'm in love with Palestinian culture, especially the rich tapestry of food that holds a special place in my heart. Exploring the diverse flavors and dishes has become a delightful journey for me. \n\nWhen I'm not immersed in my studies or fitness routine, you can often find me delving into the outdoors. I have a genuine appreciation for nature, and spending time outside is my way of unwinding. Alongside my love for the outdoors, I enjoy learning new things. Whether it's diving into the complexities of computer engineering or watching random YouTube videos about how things work, I'm always eager to expand my knowledge and understanding of the world around me.",
+image: "https://i.ibb.co/PrghQkn/IMG-7906.jpg",
+};
+
+// a route to handle getting about-us data
+app.get('/about_us', (req, res) => {
+  res.json(data);
+});
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
