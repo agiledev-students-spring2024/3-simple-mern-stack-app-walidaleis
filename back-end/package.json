@@ -4,7 +4,11 @@
   "description": "coming soon!",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "node ./server",
+=======
+    "start": "set NODE_ENV=production && node ./server",
+>>>>>>> 36205ee44b932470afd95b62e2de5fb61014a706
     "dev": "set NODE_ENV=development && nodemon ./server",
     "test": "set NODE_ENV=test && echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +24,11 @@
     "mongoose": "^6.2.1"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "morgan": "^1.10.0",
     "nodemon": "^3.0.3"
+=======
+    "morgan": "^1.10.0"
+>>>>>>> 36205ee44b932470afd95b62e2de5fb61014a706
   }
 }
